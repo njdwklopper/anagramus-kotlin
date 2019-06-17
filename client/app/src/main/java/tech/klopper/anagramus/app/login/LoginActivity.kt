@@ -29,6 +29,7 @@ class LoginActivity : BaseActivity(), LoginViewHandler,
         )
 
         signInButton.setOnClickListener {
+            showProgress(true)
             loginHandler.startLogin()
         }
         showProgress(false)
