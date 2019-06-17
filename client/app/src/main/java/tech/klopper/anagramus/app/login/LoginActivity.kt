@@ -31,6 +31,7 @@ class LoginActivity : BaseActivity(), LoginViewHandler,
         signInButton.setOnClickListener {
             loginHandler.startLogin()
         }
+        showProgress(false)
     }
 
     override fun getWebID(): String {
