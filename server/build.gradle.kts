@@ -27,6 +27,7 @@ dependencies {
 
     implementation("com.google.firebase:firebase-admin:6.8.1")
 
+    testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
 }
