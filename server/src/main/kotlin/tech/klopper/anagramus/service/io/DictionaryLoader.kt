@@ -1,14 +1,15 @@
 package tech.klopper.anagramus.service.io
 
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Service
+import tech.klopper.anagramus.model.WordModel
 import java.io.FileInputStream
 import java.io.FileNotFoundException
 import java.nio.charset.Charset
 
-@Configuration
+@Service
 class DictionaryLoader : Dictionary {
 
-    private var wordLists: List<String> = ArrayList(120000)
+    private var wordList: MutableList<WordModel> = mutableListOf()
 
     init {
         try {
@@ -19,16 +20,19 @@ class DictionaryLoader : Dictionary {
         }
     }
 
-    override fun getWordList(): List<String> {
-        return wordLists
+    override fun getWordList(): List<WordModel> {
+        return wordList
     }
 
     private fun readIntoWords(inputStream: FileInputStream) {
         val content = inputStream.readBytes().toString(Charset.defaultCharset())
-        wordLists = content.split('\n') as ArrayList<String>
+        val wordListTmp = content.split('\n') as ArrayList<String>
+        for (word in wordListTmp){
+            wordList.add(WordModel(word))
+        }
     }
 }
 
 interface Dictionary {
-    fun getWordList(): List<String>
+    fun getWordList(): List<WordModel>
 }

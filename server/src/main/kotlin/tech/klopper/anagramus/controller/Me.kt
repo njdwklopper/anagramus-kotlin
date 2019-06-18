@@ -9,8 +9,6 @@ import tech.klopper.anagramus.model.Me
 
 @RestController
 class Me {
-
-
     @GetMapping("/me")
     fun me(@RequestHeader(value = "ID-TOKEN") idToken: String): ResponseEntity<Me> {
         val fbt = Me(FirebaseAuth.getInstance().verifyIdToken(idToken))
