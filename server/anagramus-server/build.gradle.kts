@@ -38,7 +38,9 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.bootRun {
-    args = mutableListOf("--spring.config.location=/opt/apps/anagramus/")
+    args = mutableListOf(
+        "--spring.config.additional-location=/opt/apps/anagramus/"
+    )
     jvmArgs = mutableListOf(
         "-Dlogging.level.org.springframework=DEBUG",
         "-Dlogging.level.tech.klopper.anagramus=DEBUG"
