@@ -1,6 +1,4 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-    }
-}
-rootProject.name = "anagramus"
+include(
+    "anagramus-server",
+    "word-helper"
+)
