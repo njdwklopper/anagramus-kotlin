@@ -6,7 +6,6 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import tech.klopper.anagramus.helper.FirebaseAuthLoader
-import tech.klopper.anagramus.model.MeModel
 
 class MeControllerTest {
 
@@ -26,8 +25,8 @@ class MeControllerTest {
     @Test
     fun me() {
         Assert.assertEquals(
-                MeModel(fbh.verifyIdToken("1234")).token.claims,
-                me.me("1234").body!!.token.claims
+            fbh.verifyIdToken("1234").claims,
+            me.me("1234").body!!.claims
         )
     }
 }
