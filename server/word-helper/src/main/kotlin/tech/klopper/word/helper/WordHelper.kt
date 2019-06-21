@@ -4,13 +4,19 @@ import tech.klopper.word.io.WordResourceLoader
 import java.util.*
 import java.util.regex.Pattern
 
-class WordHelper(private val wordLoaderWord: WordResourceLoader) {
+interface IWordHelper {
+    fun getMatchingWordsByLength(string: String, wordSize: Int): ArrayList<String>
+    fun getAvailableWordsFromWord(wordIn: String): List<String>
+    fun getWordListByWordLength(length: Int): List<String>
+}
+
+class WordHelper(private val wordLoaderWord: WordResourceLoader) : IWordHelper {
 
     fun doesWordContainThisManyChars(word: String, length: Int): Boolean {
         return word.length == length
     }
 
-    fun getMatchingWordsByLength(string: String, wordSize: Int): ArrayList<String> {
+    override fun getMatchingWordsByLength(string: String, wordSize: Int): ArrayList<String> {
         val tmpList = getWordListByWordLength(wordSize)
         val newList = ArrayList<String>()
 
@@ -32,21 +38,21 @@ class WordHelper(private val wordLoaderWord: WordResourceLoader) {
         return newList
     }
 
-    fun getAvailableWordsFromWord(wordIn: String): List<String> {
+    override fun getAvailableWordsFromWord(wordIn: String): List<String> {
         val tmpWords = mutableListOf<String>()
-        for (i in 3..wordIn.length){
+        for (i in 3..wordIn.length) {
             val tmpList = getWordListByWordLength(i)
-            for (word in tmpList){
+            for (word in tmpList) {
                 var matchCount = word.length
                 var selectedWord = wordIn
                 val arr = word.toCharArray().sorted().joinToString("")
-                for (char in arr){
-                    if (char in selectedWord){
+                for (char in arr) {
+                    if (char in selectedWord) {
                         selectedWord = selectedWord.replace("$char", "")
                         matchCount--
                     }
                 }
-                if (matchCount == 0){
+                if (matchCount == 0) {
                     tmpWords.add(word)
                 }
             }
@@ -71,7 +77,7 @@ class WordHelper(private val wordLoaderWord: WordResourceLoader) {
         } else shuffled
     }
 
-    fun getWordListByWordLength(length: Int): List<String> {
+    override fun getWordListByWordLength(length: Int): List<String> {
         val tmpList = ArrayList<String>(length)
         val wordList = wordLoaderWord.getWordList()
         for (word in wordList) {

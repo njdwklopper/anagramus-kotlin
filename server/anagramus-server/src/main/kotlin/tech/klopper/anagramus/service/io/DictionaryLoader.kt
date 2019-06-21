@@ -6,6 +6,7 @@ import org.springframework.lang.Nullable
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestClientException
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.getForObject
 import tech.klopper.word.io.WordResourceLoader
 import java.io.File
 import java.io.FileNotFoundException
@@ -13,8 +14,8 @@ import java.io.FileNotFoundException
 @Service
 @Configuration
 class DictionaryLoader(
-        @Value("\${tech.klopper.anagramus.dictionary.path}") private val dictListPath: String,
-        @Value("\${tech.klopper.anagramus.dictionary.definition.path}") private val dictDefinePath: String
+    @Value("\${tech.klopper.anagramus.dictionary.path}") private val dictListPath: String,
+    @Value("\${tech.klopper.anagramus.dictionary.definition.path}") private val dictDefinePath: String
 ) : Dictionary {
 
     private var wordList: MutableList<String> = mutableListOf()
@@ -36,7 +37,7 @@ class DictionaryLoader(
     }
 
     override fun <T> getForObject(word: String, responseType: Class<T>, vararg uriVariables: Any): String? {
-        return RestTemplate().getForObject<String>("$dictDefinePath$word", String::class.java)
+        return RestTemplate().getForObject("$dictDefinePath$word", String::class.java)
     }
 }
 

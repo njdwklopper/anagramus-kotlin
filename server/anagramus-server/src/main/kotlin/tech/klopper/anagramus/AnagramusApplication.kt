@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class AnagramusApplication
 
 fun main(args: Array<String>) {
-	runApplication<AnagramusApplication>(*args)
+    runApplication<AnagramusApplication>(*args)
 }
