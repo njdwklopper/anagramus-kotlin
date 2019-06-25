@@ -1,10 +1,9 @@
 namespace Anagramus.service._Base.session
 {
-    public interface IFirebaseHandler
+    public interface IFirebaseHandler<T>
     {
         bool IsUserNotNull();
-
-//        FirebaseAuth GetAuth();
+        T GetAuth();
         void SignOut();
     }
 }

@@ -10,6 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Xamarin.Firebase.Core" Version="60.1142.1" />
         <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
     </ItemGroup>
 

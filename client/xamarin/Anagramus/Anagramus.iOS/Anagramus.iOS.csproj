@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="service\_base\session\FirebaseIOSUserHandler.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +107,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Xamarin.Firebase.iOS.Auth" Version="5.0.4.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +115,9 @@
       <Project>{CEDF79B4-3962-4A0B-BD77-85F24BC750A2}</Project>
       <Name>Anagramus</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="service\_base\google" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
