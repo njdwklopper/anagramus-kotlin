@@ -108,7 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Firebase.iOS.Auth" Version="5.0.4.1" />
+    <PackageReference Include="Xamarin.Firebase.iOS.Core" Version="5.2.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
+    <PackageReference Include="Xamarin.Google.iOS.SignIn" Version="4.4.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Anagramus\Anagramus.csproj">
