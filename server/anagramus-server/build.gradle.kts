@@ -46,3 +46,33 @@ tasks.bootRun {
         "-Dlogging.level.tech.klopper.anagramus=DEBUG"
     )
 }
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0")
+    }
+}
+
+//TODO convert following gradle copy pasta into kotlin dsl
+////apply plugin: 'com.palantir.docker'
+//plugins {
+//    kotlin("com.palantir.docker")
+//}
+//tasks.withType<Copy>{
+//    dependsOn(bootJar) bootJar
+//            from(zipTree(tasks.bootJar.outputs.files.singleFile))
+//    into("build/dependency")
+//}
+//task unpack(type: Copy) {
+//    dependsOn bootJar
+//            from(zipTree(tasks.bootJar.outputs.files.singleFile))
+//    into("build/dependency")
+//}
+//docker {
+//    name "${project.group}/${bootJar.baseName}"
+//    copySpec.from(tasks.unpack.outputs).into("dependency")
+//    buildArgs(['DEPENDENCY': "dependency"])
+//}
